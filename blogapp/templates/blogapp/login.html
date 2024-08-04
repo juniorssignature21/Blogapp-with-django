@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4 p-2">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    <div class="row">
+    
+    <div class="col-md-4"></div>
+    
+    <div class="col-md-4" id="myform">
+        
+    <h3 class="text-white bg-dark text-center p-3">
+        Login
+    </h3>
+    <div class="card p-2" id="myform">
+    <form action="/login" method="POST">
+            {% csrf_token %}
+    <div class="form-group">
+    
+        <span>
+            <h5>
+                <i class="bi bi-envelope navicon"></i>  Email:
+            </h5>
+        </span>
+        {% comment %} <input type="email" name="email" id="" class="form-control mb-3" required> {% endcomment %}
+        <input type="email" name="email" id="" class="form-control mb-3" required>
+    </div>
+    <div class="form-group">
+    
+        <span>
+            <h5>
+                <i class="fas fa-key"></i>  Password:
+            </h5>
+        </span>
+        <input type="Password" name="pass1" id="" class="form-control mb-3" required>
+    </div>
+    <div class="d-grid gap-2">
+        <button class="btn btn-dark" type="submit">Login</button>
+        
+    </div>
+    <br>
+    New User? <a href="/signup">Signup</a>
+    </div>
+    </form>
+    
+    </div>
+    
+    <div class="col-md-4"></div>
+    
+    </div>
+    
+    </div>
+    
+{% endblock content %}
